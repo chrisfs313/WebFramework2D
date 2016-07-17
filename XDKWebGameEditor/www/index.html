@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<!--
+	* Please see the included README.md file for license terms and conditions.
+	-->
+	<head>
+		<title>Blank Hybrid App Project Template</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+		<!--
+		* The "meta viewport" tag (below) helps your app size appropriately to a device's screen.
+		* Note that the meta viewport approach is being phased out in favor of the @viewport CSS rule.
+		* For a quick overview of both, see this article:
+		*   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+		* To see what happens, try the app on a real device with and without a "meta viewport" tag.
+		-->
+
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+		<style>
+			/* following three (cascaded) are equivalent to above three meta viewport statements */
+			/* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+			/* see http://dev.w3.org/csswg/css-device-adapt/ */
+			@-ms-viewport { width: 100vw ; zoom: 100% ; }                           @viewport { width: 100vw ; zoom: 100% ; }
+			@-ms-viewport { user-zoom: fixed ; }                                    @viewport { user-zoom: fixed ; }
+			/*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+		</style>
+
+		<!-- See long explanation at the bottom of this file for info regarding placement of JS libraries. -->
+		<!-- These library references (below) are just examples to give you the general idea... -->
+		<!-- <script src="lib/mc/hammer.js"></script> -->
+		<!-- <script src="lib/ft/fastclick.js"></script> -->
+		<!-- <script src="lib/jq/jquery.js"></script> -->
+		<!-- <script src="lib/af/jq.appframework.js"></script> -->
+		<!-- <script src="lib/af/appframework.ui.js"></script> -->
+
+		<!-- <link rel="stylesheet" href="lib/af/icons.css"> -->
+		<!-- <link rel="stylesheet" href="lib/af/af.ui.css"> -->
+		<!--
+		<script>
+		// if you're using App Framework, you might want to also do this
+		$.ui.autoLaunch = false ;
+		// and then use $.ui.launch() as shown in the app.hideSplashScreen() function
+		// see https://github.com/01org/appframework/blob/master/documentation/detail/%24.ui.launch.md
+		</script>
+		-->
+		<link rel="stylesheet" href="css/app.css">
+
+        <!-- Files used in your project -->
+        <script src="../www/asset/shaders/ShaderSources.js"></script>
+                     
+        <script src="../www/js/libs/sylvester.js"></script>
+        <script src="../www/js/libs/GLUtils.js"></script>
+                     
+        <script src="../www/js/octopus-web/framework/core/NCanvasContextManagment.js"></script>
+        <script src="../www/js/octopus-web/framework/core/shader/NShaderFactory.js"></script>
+        <script src="../www/js/octopus-web/framework/core/shader/NShaderPrimitive.js"></script>
+        <script src="../www/js/octopus-web/framework/core/shader/NShaderTexture.js"></script>
+        <script src="../www/js/octopus-web/framework/scene/NSceneManager.js"></script>
+        <script src="../www/js/octopus-web/framework/scene/NBaseScene.js"></script>
+        <script src="../www/js/octopus-web/framework/core/content/NContentManagment.js"></script>
+        <script src="../www/js/octopus-web/framework/core/content/NBaseContent.js"></script>
+        <script src="../www/js/octopus-web/framework/core/content/NImageContent.js"></script>
+        <script src="../www/js/octopus-web/framework/core/components/NTextfield2D.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/camera/NRenderCamera.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/D2D/optimization/NSpriteBatcher.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/D2D/NEffect2D.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/D2D/NEffect2DFactory.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/D2D/NSprite.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/D2D/NAnimator2D.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/D2D/NPrimitiveQuad.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/NColor.js"></script>
+        <script src="../www/js/octopus-web/framework/core/render/graphics/data/dtNQuadTextCoords.js"></script>
+        <script src="../www/js/octopus-web/framework/utils/NInterval.js"></script>
+        <script src="../www/js/octopus-web/framework/utils/NDebugConsole.js"></script>
+        <script src="../www/js/octopus-web/framework/utils/NCommon.js"></script>
+        <script src="../www/js/octopus-web/framework/utils/NHTMLUtil.js"></script>
+        <script src="../www/js/octopus-web/framework/utils/GLHelper.js"></script>
+        <script src="../www/js/octopus-web/framework/math/NMath.js"></script>
+        <script src="../www/js/octopus-web/framework/math/NVector2.js"></script>
+        <script src="../www/js/octopus-web/framework/math/interpolators/NHoming2D.js"></script>
+        <script src="../www/js/octopus-web/framework/enums/NKeyCodeEnum.js"></script>
+        <script src="../www/js/octopus-web/framework/enums/NRenderEngineEnum.js"></script>
+        <script src="../www/js/octopus-web/framework/core/device/NGraphicDeviceManager.js"></script>
+        <script src="../www/js/octopus-web/framework/core/device/NGraphicDevice.js"></script>
+        <script src="../www/js/octopus-web/framework/core/device/NDeviceCapabilities.js"></script>
+        <script src="../www/js/octopus-web/framework/core/device/optimization/NDeviceOptimizationManagment.js"></script>
+        <script src="../www/js/octopus-web/framework/core/device/optimization/NVBOObject.js"></script>
+        <script src="../www/js/octopus-web/framework/core/device/optimization/NVBOPooler.js"></script>
+        <script src="../www/js/octopus-web/framework/NOctopusFramework.js"></script>
+        <script src="../www/js/octopus-web/framework/settings/NFrameworkSettings.js"></script>
+                     
+        <script src="../www/js/space-game/NGraviusGame.js"></script>
+        <script src="../www/js/space-game/NPlayer.js"></script>
+        <script src="../www/js/space-game/NGBulletFactory.js"></script>
+        <script src="../www/js/space-game/NGPlayerBullet.js"></script>
+        <script src="../www/js/space-game/NGEnemyFactory.js"></script>
+        <script src="../www/js/space-game/NGDummyEnemy.js"></script>
+        <script src="../www/js/space-game/NGEnemyHomingMissile.js"></script>
+        <script src="../www/js/space-game/hud/NGGameHud.js"></script>
+        <script src="../www/js/space-game/enums/EnemyTypeEnum.js"></script>
+        <script src="../www/js/space-game/enums/ProyectileTypeEnum.js"></script>
+        <script src="../www/js/space-game/scenes/NGameScene.js"></script>
+  
+
+        <script>
+            function OnReadyDocument() {
+                var framework = new NOctopusFramework();
+                framework.StartOctopusFramework2D("canvas");
+                framework.GetSceneManager().GotoScene("NGameScene");
+            }
+        </script>
+    </head>
+
+	<body onload="OnReadyDocument()">
+        <div id="canvas">
+
+        </div>
+    </body>
+</html>
